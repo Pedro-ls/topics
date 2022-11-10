@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+    <script src="./calculoUsabilidade.js" ></script>
+    <script src="./calculoAcessibilidade.js" ></script>
+
+    <script>
+
+        function aparecerDivs(){
+
+            var soma = 0
+
+            var div_usabilidade = document.getElementById('usabilidade');
+            var div_acessibilidade = document.getElementById('acessibilidade');
+            var div_experiencia = document.getElementById('experiencia');
+
+            // Usabilidade div
+            if (document.getElementById('usabilidade_campo').checked){
+
+                div_usabilidade.hidden = false;
+                soma += parseFloat(document.getElementById('pesoUsabilidade').value)
+            } else {
+
+                div_usabilidade.hidden = true;
+            }
+
+            // Acessibilidade div
+            if (document.getElementById('acessibilidade_campo').checked){
+
+                div_acessibilidade.hidden = false;
+                soma += parseFloat(document.getElementById('pesoAcessibilidade').value)
+            } else {
+
+                div_acessibilidade.hidden = true;
+            }
+
+            // Experiencia do usuário div
+            if (document.getElementById('ux_campo').checked){
+
+                div_experiencia.hidden = false;
+                soma += parseFloat(document.getElementById('pesoUX').value)
+            } else {
+
+                div_experiencia.hidden = true;
+            }
+
+            if (soma != 1){
+
+                alert('A soma dos peso necessita ser 100%\nSoma = ' + soma.toFixed(2))
+            }
+        }
+
+        function checarBox(){
+
+            var boxUsabilidade = document.getElementById('usabilidade_campo')
+            var boxAcessibilidade = document.getElementById('acessibilidade_campo')
+            var boxUX = document.getElementById('ux_campo')
+
+            
+            if (boxUsabilidade.checked == true){
+
+                calcularUsabilidade()
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h1 style="color: #9932cc"> Cadastro de Quality Model</h1>
+    <p></p><input type="checkbox" id="usabilidade_campo" value="Usabilidade" onclick="aparecerDivs()">Usabilidade
+    <input type="number" placeholder="Digite o Peso" step="0.1" max="100" id="pesoUsabilidade"></p>
+    <p></p><input type="checkbox" id="acessibilidade_campo" value="Acessibilidade" onclick="aparecerDivs()">Acessibilidade
+    <input type="number" placeholder="Digite o Peso" step="0.1" max="1" id="pesoAcessibilidade"></p>
+    <p></p><input type="checkbox" id="ux_campo" value="UX" onclick="aparecerDivs()">Experiência do Usuário
+    <input type="number" placeholder="Digite o Peso" step="0.1" max="1" id="pesoUX"></p>
+    
+
+    <div id="usabilidade" hidden>
+        <h1 style="color: #9932cc">Usabilidade</h1>
+        <p style="color: #316fcc;font-size: 150%;">Eficiência <input type="number" id="pesoEficiencia"placeholder="Digite o peso" step="0.1" max="100">
+        <p style="color: #31cc9d">Responsividade <input type="number" id="responsividade"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoResponsividade" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Flexibilidade do Ambiente <input type="number" id="flexibilidade_ambiente"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoFlexAmbiente" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Flexibilidade Geral <input type="number" id="flexibilidade_geral"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoFlexGeral" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Performace da Página <input type="number" id="performace_pagina"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoPerfomancePagina" placeholder="Digite o peso" step="0.1" max="100"></p>
+        <p style="color: #316fcc;font-size: 150%;">Satisfação <input type="number" id="satisfacao"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoSatisfacao" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Capacidade de Aprendizado <input type="number" id="aprendizado"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoCapacidadeAprendizado" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Segurança no Uso <input type="number" id="seguranca"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoSegurancaUso" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Utilidade <input type="number" id="utilidade"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoUtilidade" placeholder="Digite o peso" step="0.1" max="100"> </p>
+    </div>
+    
+    <div id="acessibilidade" hidden>
+        <h1 style="color: #9932cc">Acessibilidade</h1>
+        <p style="color: #316fcc;font-size: 150%;">Percepção <input type="number" id="pesoPercepcao"placeholder="Digite o peso" step="0.1" max="100">
+        <p style="color: #31cc9d">Tela simples <input type="number" id="tela_simples"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_tela_simples" placeholder="Digite o peso" step="0.1" max="100"> </p>   
+        <p style="color: #31cc9d">Cores e fontes <input type="number" id="cores_fontes"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_cores_fontes" placeholder="Digite o peso" step="0.1" max="100"> </p> 
+        <p style="color: #31cc9d">Percepção do sistema <input type="number" id="percepcao_sistema"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_percepcao_sistema" placeholder="Digite o peso" step="0.1" max="100"> </p>   
+        <p style="color: #31cc9d">Performace da Página <input type="number" id="performace_pagina_2"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoPerformancePagina_2" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Operabilidade <input type="number" id="operabilidade"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="pesoOperabilidade" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Botão Voltar <input type="number" id="botao_voltar"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_botao_voltar" placeholder="Digite o peso" step="0.1" max="100"> </p>  
+        <p style="color: #31cc9d">Percepção do foco <input type="number" id="percepcao_foco"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_percepcao_foco" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Links Quebrados <input type="number" id="links_quebrados"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_links_quebrados" placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #31cc9d">Preços Acessiveis <input type="number" id="precos_acessiveis"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" id="peso_precos_acessiveis" placeholder="Digite o peso" step="0.1" max="100"> </p>      
+    </div>
+
+    <div id="experiencia" hidden>
+        <h1 style="color: #9932cc">Experiência do Usuário</h1>
+        <p style="color: #316fcc;font-size: 150%;">Opinião do cliente <input type="number" name="opiniao_cliente"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" name="pesoOpiniaoCliente"placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Informação da companhia <input type="number" name="aprendizado"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" name="pesoInformacaoCompanhia"placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Reputação da companhia <input type="number" name="reputacao"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" name="pesoReputacaoCompanhia"placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Prazer no uso <input type="number" name="prazer_uso"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" name="pesoPrazerUso"placeholder="Digite o peso" step="0.1" max="100"> </p>
+        <p style="color: #316fcc;font-size: 150%;">Padlock <input type="number" name="padlock"placeholder="Digite o Valor" step="0.1" max="1"> Peso <input type="number" name="pesoPadlock"placeholder="Digite o peso" step="0.1" max="100"> </p>
+    </div>
+
+    <p><input type="button" value="Cadastrar"> <input type="button" value="Calcular" onclick="checarBox()"></p>
+    
+</body>
+</html>
